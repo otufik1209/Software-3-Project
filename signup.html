@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up</title>
+  <style>
+    :root{
+      --bg:#0f1221;
+      --card:#171b33;
+      --ink:#e9ecff;
+      --muted:#aeb8ff;
+      --line:#2b3360;
+      --accent:#59f1c4;
+      --danger:#ff6b6b;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 110% -10%, #6ea0ff33, transparent 60%),
+        radial-gradient(900px 600px at -10% 110%, #00ffc249, transparent 60%),
+        var(--bg);
+      font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      color:var(--ink);
+      display:grid; place-items:center;
+    }
+
+    .card{
+      width:min(92vw, 520px);
+      background:color-mix(in oklab, var(--card) 92%, black);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 20px 40px #0006, inset 0 1px 0 #fff1;
+      padding:28px;
+    }
+
+    h1{margin:0 0 4px; font-size:1.6rem}
+    p.sub{margin:0 0 18px; color:var(--muted)}
+
+    form{display:grid; gap:14px}
+    fieldset{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      margin:0;
+    }
+    legend{padding:0 8px; color:var(--muted); font-weight:700}
+
+    .grid{display:grid; gap:12px}
+    .two{grid-template-columns:1fr 1fr}
+    @media (max-width:560px){ .two{grid-template-columns:1fr} }
+
+    label{font-weight:600; color:#c9d2ff}
+    input,select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid #32407a;
+      background:#0c1230;
+      color:var(--ink);
+      outline:none;
+      box-shadow:inset 0 1px 0 #fff1;
+    }
+    input::placeholder{color:#9fb0ffb0}
+    input:focus,select:focus{outline:2px solid var(--accent); outline-offset:2px}
+
+    .roles{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; cursor:pointer;
+      border:1px solid var(--line); color:#c9d2ff; background:#0d1430;
+      font-weight:600;
+    }
+    .chip input{appearance:none; width:16px; height:16px; border-radius:50%;
+      border:2px solid #8ea0ff; background:transparent}
+    .chip input:checked{border-color:transparent;
+      background:radial-gradient(circle at 50% 50%, var(--accent) 0 6px, transparent 7px)}
+
+    .agree{display:flex; gap:10px; align-items:flex-start; font-size:.95rem; color:#cfd6ff}
+    .agree input{margin-top:.2rem}
+
+    .error{color:var(--danger); font-size:.9rem}
+
+    .actions{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:4px}
+    .btn{
+      border:none; cursor:pointer; padding:12px 18px; border-radius:12px;
+      background:linear-gradient(135deg, var(--accent), #7df1ff);
+      color:#00211a; font-weight:800; box-shadow:0 10px 18px #00ffc244, inset 0 1px 0 #fff9;
+    }
+    .link{color:#baccff; text-decoration:none}
+    .link:hover{text-decoration:underline}
+
+    .footnote{margin-top:10px; font-size:.9rem; color:#b7c2ff}
+  </style>
+</head>
+<body>
+  <main class="card" aria-labelledby="title">
+    <h1 id="title">Create your account</h1>
+    <p class="sub">Sign up to continue</p>
+
+    <form action="#" method="post" novalidate>
+      <fieldset class="grid two">
+        <legend>Basic info</legend>
+        <div>
+          <label for="first">First name</label>
+          <input id="first" name="first" autocomplete="given-name" required placeholder="Ayesha" />
+        </div>
+        <div>
+          <label for="last">Last name</label>
+          <input id="last" name="last" autocomplete="family-name" required placeholder="Rahman" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="name@example.com" />
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="e.g., +8801XXXXXXXXX" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Choose your role</legend>
+        <div class="roles" role="radiogroup" aria-label="Account role">
+          <label class="chip"><input type="radio" name="role" value="patient" checked /> Patient</label>
+          <label class="chip"><input type="radio" name="role" value="doctor" /> Doctor</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="grid two">
+        <legend>Security</legend>
+        <div>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" minlength="8" maxlength="64"
+                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$"
+                 required placeholder="At least 8 characters (Aa1…)" />
+        </div>
+        <div>
+          <label for="confirm">Confirm password</label>
+          <input id="confirm" name="confirm" type="password" required placeholder="Re-enter password" />
+        </div>
+      </fieldset>
+
+      <label class="agree">
+        <input type="checkbox" required />
+        <span>I agree to the <a class="link" href="#">Terms</a> and <a class="link" href="#">Privacy Policy</a>.</span>
+      </label>
+
+      <div class="actions">
+        <span>Already have an account? <a class="link" href="#">Log in</a></span>
+        <button class="btn" type="submit">Create account</button>
+      </div>
+
+      <p class="footnote">We protect your data with encryption in transit and at rest.</p>
+    </form>
+  </main>
+</body>
+</html>
