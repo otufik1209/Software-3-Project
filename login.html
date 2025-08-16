@@ -1,84 +1,105 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Log In</title>
-<style>
-:root{--bg:#0f1221;--card:#171b33;--ink:#e9ecff;--muted:#aeb8ff;--line:#2b3360;--accent:#59f1c4;--radius:16px}
-*{box-sizing:border-box} html,body{height:100%}
-body{margin:0;background:
-  radial-gradient(900px 600px at 110% -10%, #6ea0ff33, transparent 60%),
-  radial-gradient(900px 600px at -10% 110%, #00ffc249, transparent 60%),
-  var(--bg);
-  font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--ink);
-  display:grid;place-items:center}
-.card{width:min(92vw,480px);background:color-mix(in oklab, var(--card) 92%, black);
-  border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 20px 40px #0006,inset 0 1px 0 #fff1;padding:28px}
-h1{margin:0 0 4px;font-size:1.6rem} p.sub{margin:0 0 18px;color:var(--muted)}
-form{display:grid;gap:14px}
-label{font-weight:600;color:#c9d2ff}
-input{width:100%;padding:12px;border-radius:12px;border:1px solid #32407a;background:#0c1230;color:var(--ink);outline:none;box-shadow:inset 0 1px 0 #fff1}
-input::placeholder{color:#9fb0ffb0} input:focus{outline:2px solid var(--accent);outline-offset:2px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.remember{display:flex;gap:8px;align-items:center;color:#cfd6ff}
-.btn{border:none;cursor:pointer;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7df1ff);color:#00211a;font-weight:800;box-shadow:0 10px 18px #00ffc244,inset 0 1px 0 #fff9}
-.link{color:#baccff;text-decoration:none}.link:hover{text-decoration:underline}
-.switch{margin-top:14px;text-align:center}
-.error{color:#ff6b6b;font-size:.95rem;min-height:1.2em}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Log In (Open Access)</title>
+  <style>
+    :root{--bg:#0f1221;--card:#171b33;--ink:#e9ecff;--muted:#aeb8ff;--line:#2b3360;--accent:#59f1c4;--radius:16px}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 110% -10%, #6ea0ff33, transparent 60%),
+        radial-gradient(900px 600px at -10% 110%, #00ffc249, transparent 60%),
+        var(--bg);
+      font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      color:var(--ink);
+      display:grid;place-items:center;
+    }
+    .card{
+      width:min(92vw,480px);
+      background:color-mix(in oklab, var(--card) 92%, black);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 20px 40px #0006,inset 0 1px 0 #fff1;
+      padding:28px
+    }
+    h1{margin:0 0 4px;font-size:1.6rem}
+    p.sub{margin:0 0 18px;color:var(--muted)}
+    form{display:grid;gap:14px}
+    label{font-weight:600;color:#c9d2ff}
+    input{
+      width:100%;padding:12px;border-radius:12px;border:1px solid #32407a;
+      background:#0c1230;color:var(--ink);outline:none;box-shadow:inset 0 1px 0 #fff1
+    }
+    input::placeholder{color:#9fb0ffb0}
+    input:focus{outline:2px solid var(--accent);outline-offset:2px}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .btn{
+      border:none;cursor:pointer;padding:12px 18px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),#7df1ff);
+      color:#00211a;font-weight:800;box-shadow:0 10px 18px #00ffc244,inset 0 1px 0 #fff9
+    }
+    .link{color:#baccff;text-decoration:none}
+    .link:hover{text-decoration:underline}
+    .switch{margin-top:14px;text-align:center}
+    .note{color:#cbd4ff;font-size:.95rem}
+  </style>
 </head>
 <body>
   <main class="card" aria-labelledby="title">
-    <h1 id="title">Welcome back</h1>
-    <p class="sub">Use the account you just created.</p>
+    <h1 id="title">Welcome</h1>
+    <p class="sub">Demo login — enter anything and go to the dashboard.</p>
 
+    <!-- novalidate + no required attrs so *anything* works -->
     <form id="loginForm" novalidate>
       <div>
-        <label for="id">Email or phone</label>
-        <input id="id" name="id" type="text" autocomplete="username" required placeholder="name@example.com or +8801…" />
+        <label for="id">Email or phone (anything)</label>
+        <input id="id" name="id" type="text" placeholder="e.g., guest@example.com or +8801…" />
       </div>
       <div>
-        <label for="pw">Password</label>
-        <input id="pw" name="pw" type="password" autocomplete="current-password" required placeholder="Your password" />
-      </div>
-
-      <div class="row">
-        <label class="remember"><input type="checkbox" name="remember" /> Remember me</label>
-        <a class="link" href="./reset-password.html">Forgot password?</a>
+        <label for="pw">Password (anything)</label>
+        <input id="pw" name="pw" type="password" placeholder="Type anything" />
       </div>
 
       <div class="row" style="margin-top:8px">
-        <button class="btn" type="submit">Log in</button>
+        <button class="btn" type="submit">Enter dashboard</button>
       </div>
-      <div id="msg" class="error" aria-live="polite"></div>
     </form>
 
-    <p class="switch">Don’t have an account? <a class="link" href="./signup.html">Create one</a></p>
+    <p class="switch note">This demo creates a temporary “Guest” user in your browser storage so the dashboard loads.</p>
   </main>
 
-<script>
-const USER_KEY='UPPT_USER';
-const SESSION_KEY='UPPT_SESSION';
-document.getElementById('loginForm').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const id = document.getElementById('id').value.trim().toLowerCase();
-  const pw = document.getElementById('pw').value;
-  const msg = document.getElementById('msg');
+  <script>
+    // Keys used by your dashboard & other pages
+    const USER_KEY    = 'UPPT_USER';
+    const SESSION_KEY = 'UPPT_SESSION';
 
-  const raw = localStorage.getItem(USER_KEY);
-  if(!raw){ msg.textContent='No account found. Please sign up first.'; return; }
-  const user = JSON.parse(raw);
-  const matchId = (id === (user.email||'').toLowerCase()) || (id === (user.phone||'').toLowerCase());
-  const matchPw = pw === user.password;
+    document.getElementById('loginForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
 
-  if(matchId && matchPw){
-    localStorage.setItem(SESSION_KEY, JSON.stringify({ email:user.email, ts: Date.now() }));
-    location.href = './dashboard.html';
-  }else{
-    msg.textContent = 'Invalid credentials. Try again.';
-  }
-});
-</script>
+      // Grab whatever the user typed (or fallback to a default)
+      const idRaw = (document.getElementById('id').value || '').trim();
+      const id    = idRaw || 'guest@demo';
+      const nameFromId = id.includes('@') ? id.split('@')[0] : (id || 'Guest');
+      const first = nameFromId ? (nameFromId.charAt(0).toUpperCase() + nameFromId.slice(1)) : 'Guest';
+
+      // Create a minimal "guest" user if none exists (so dashboard guard passes)
+      const user = {
+        first, last: '',
+        email: id.includes('@') ? id : '',
+        phone: id.startsWith('+') ? id : '',
+        createdAt: Date.now()
+      };
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+
+      // Set a session (no validation)
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ email: user.email || 'guest@demo', ts: Date.now() }));
+
+      // Go to dashboard
+      location.href = './dashboard.html';
+    });
+  </script>
 </body>
 </html>
