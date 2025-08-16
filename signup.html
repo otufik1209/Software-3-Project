@@ -157,5 +157,28 @@
       <p class="footnote">We protect your data with encryption in transit and at rest.</p>
     </form>
   </main>
+
+<script>
+const USER_KEY = 'UPPT_USER';
+document.getElementById('form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const first = document.getElementById('first').value.trim();
+  const last  = document.getElementById('last').value.trim();
+  const email = document.getElementById('email').value.trim().toLowerCase();
+  const phone = document.getElementById('phone').value.trim();
+  const pass  = document.getElementById('password').value;
+  const conf  = document.getElementById('confirm').value;
+  const msgEl = document.getElementById('msg');
+
+  if(!first || !last || !email || !pass){ msgEl.textContent = 'Please fill all required fields.'; return; }
+  if(pass !== conf){ msgEl.textContent = 'Passwords do not match.'; return; }
+
+  const user = { first, last, email, phone, password: pass, createdAt: Date.now() };
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  msgEl.className = 'success';
+  msgEl.textContent = 'Account created! Redirecting to log in…';
+  setTimeout(()=> location.href = './login.html', 700);
+});
+</script>
 </body>
 </html>
